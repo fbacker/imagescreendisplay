@@ -187,7 +187,7 @@ class Media extends Component {
                         checked={this.props.assetsFilterGeneral === "normal"}
                         onChange={this.onFilterGeneral}
                       />{" "}
-                      Standard
+                      Sök
                       <span className="circle">
                         <span className="check" />
                       </span>
@@ -202,7 +202,7 @@ class Media extends Component {
                         checked={this.props.assetsFilterGeneral === "display"}
                         onChange={this.onFilterGeneral}
                       />{" "}
-                      Skärm
+                      Bildskärm
                       <span className="circle">
                         <span className="check" />
                       </span>
