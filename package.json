@@ -3,15 +3,38 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "chart.js": "^2.7.3",
+    "cors": "^2.8.5",
+    "googleapis": "^34.0.0",
+    "lodash": "^4.17.11",
+    "mailparser": "^2.4.0",
+    "md5": "^2.2.1",
+    "mime-types": "^2.1.21",
+    "moment": "^2.22.2",
+    "node-sass": "^4.10.0",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
-    "react-scripts": "2.1.1"
+    "react-redux": "^5.1.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "react-slick": "^0.23.2",
+    "reactstrap": "^6.5.0",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.5",
+    "redux-persist": "^5.10.0",
+    "redux-thunk": "^2.3.0",
+    "sharp": "^0.21.1",
+    "slick-carousel": "^1.8.1",
+    "sqlite3": "^4.0.3",
+    "uniqid": "^5.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "nodemon src/server/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -21,5 +44,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "flow": "^0.2.3",
+    "flow-bin": "^0.86.0",
+    "nodemon": "^1.18.6"
+  }
 }

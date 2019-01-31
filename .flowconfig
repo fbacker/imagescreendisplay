@@ -1,0 +1,11 @@
+[ignore]
+
+[include]
+./src/client
+[libs]
+
+[lints]
+
+[options]
+
+[strict]
