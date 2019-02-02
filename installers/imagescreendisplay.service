@@ -1,0 +1,13 @@
+[Unit]
+Description=Image Screen Display
+After=network.service
+
+[Service]
+WorkingDirectory=/home/username/imagescreendisplay
+ExecStart= /usr/bin/node index.js
+Restart=always
+RestartSec=10
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
