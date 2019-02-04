@@ -65,18 +65,18 @@ fi
 
 
 # Install
-cd /home/username/
+cd /home/imgviewsys/
 if [ -d "./imagescreendisplay" ] ; then
 	echo -e "\e[93mIt seems like service is already installed."
 	echo -e "We'll try to upgrade instead."
 	echo ""
-    cd /home/username/imagescreendisplay
+    cd /home/imgviewsys/imagescreendisplay
 
     echo -e "\e[96mUpgrade ...\e[90m"
     if git pull; then 
         echo -e "\e[92mUpgrade Done!\e[0m"
 		npm install
-		sudo cp /home/username/imagescreendisplay/installers/imagescreendisplay.service /etc/systemd/system/
+		sudo cp /home/imgviewsys/imagescreendisplay/installers/imagescreendisplay.service /etc/systemd/system/
 		sudo chmod +x /etc/systemd/system/imagescreendisplay.service
 		sudo systemctl daemon-reload
 		sudo systemctl restart imagescreendisplay.service
@@ -97,7 +97,7 @@ else
 	exit;
 fi
 
-cd /home/username/imagescreendisplay  || exit
+cd /home/imgviewsys/imagescreendisplay  || exit
 echo -e "\e[96mInstalling dependencies ...\e[90m"
 if npm install; then 
 	echo -e "\e[92mDependencies installation Done!\e[0m"
@@ -107,7 +107,7 @@ else
 fi
 
 # Use pm2 control like a service
-sudo cp /home/username/imagescreendisplay/installers/imagescreendisplay.service /etc/systemd/system/
+sudo cp /home/imgviewsys/imagescreendisplay/installers/imagescreendisplay.service /etc/systemd/system/
 sudo chmod +x /etc/systemd/system/imagescreendisplay.service
 sudo systemctl enable imagescreendisplay.service
 sudo systemctl start imagescreendisplay.service
