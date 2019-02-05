@@ -3,7 +3,7 @@
 # THANKS FOR AWESOME BASE CREATED BY:
 #   MAGIC MIRROR
 
-# bash -c "$(curl -sL https://raw.githubusercontent.com/fbacker/imagescreendisplay/release/installers/raspberry.sh)"
+# bash -c "$(curl -sL https://raw.githubusercontent.com/fbacker/imagescreendisplay/master/installers/raspberry.sh)"
 
 
 # Define the tested version of Node.js.
