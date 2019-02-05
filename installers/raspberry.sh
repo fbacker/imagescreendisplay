@@ -25,7 +25,8 @@ function command_exists () { type "$1" &> /dev/null ;}
 
 # Installing helper tools
 echo -e "\e[96mInstalling helper tools ...\e[90m"
-sudo apt-get --assume-yes install git || exit
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get --assume-yes install git nodejs || exit
 
 # Check if we need to install or upgrade Node.js.
 echo -e "\e[96mCheck current Node installation ...\e[0m"
