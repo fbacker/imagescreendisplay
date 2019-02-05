@@ -67,7 +67,7 @@ if [ -d "./imagescreendisplay" ] ; then
     cd /home/imgviewsys/imagescreendisplay
 
     echo -e "\e[96mUpgrade ...\e[90m"
-    if git pull; then 
+    if if git reset --hard; then 
         echo -e "\e[92mUpgrade Done!\e[0m"
 		npm install
 		sudo cp /home/imgviewsys/imagescreendisplay/installers/imagescreendisplay.service /etc/systemd/system/
