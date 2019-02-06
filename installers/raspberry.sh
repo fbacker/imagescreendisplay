@@ -26,7 +26,10 @@ function command_exists () { type "$1" &> /dev/null ;}
 # Installing helper tools
 echo -e "\e[96mInstalling helper tools ...\e[90m"
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get --assume-yes install git nodejs || exit
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+sudo apt-get --assume-yes install git nodejs yarn || exit
 
 # Check if we need to install or upgrade Node.js.
 echo -e "\e[96mCheck current Node installation ...\e[0m"
@@ -68,25 +71,26 @@ if [ -d "./imagescreendisplay" ] ; then
 
     echo -e "\e[96mUpgrade ...\e[90m"
 	git reset --hard
-    if git pull; then 
-        echo -e "\e[92mUpgrade Done!\e[0m"
-		npm install
-		sudo cp /home/imgviewsys/imagescreendisplay/installers/imagescreendisplay.service /etc/systemd/system/
-		sudo chmod +x /etc/systemd/system/imagescreendisplay.service
-		sudo systemctl daemon-reload
-		sudo systemctl restart imagescreendisplay.service
-		echo -e "\e[92mService rebooted and ready!\e[0m"
-    else
-        echo -e "\e[91mUnable to upgrade."
-        echo -e "\e[91mPlease run git pull manually."
-        exit;
-    fi
+	git fetch --tags
+	latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+	git checkout $latestTag
+	echo -e "\e[92mChecked out latest release version!\e[0m"
+
+	yarn install
+	sudo cp /home/imgviewsys/imagescreendisplay/installers/imagescreendisplay.service /etc/systemd/system/
+	sudo chmod +x /etc/systemd/system/imagescreendisplay.service
+	sudo systemctl daemon-reload
+	sudo systemctl restart imagescreendisplay.service
 	exit;
 fi
 
 echo -e "\e[96mCloning ...\e[90m"
 if git clone --depth=1 https://github.com/fbacker/imagescreendisplay.git; then 
 	echo -e "\e[92mCloning Done!\e[0m"
+	git fetch --tags
+	latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+	git checkout $latestTag
+	echo -e "\e[92mChecked out latest release version!\e[0m"
 else
 	echo -e "\e[91mUnable to clone."
 	exit;
@@ -94,7 +98,7 @@ fi
 
 cd /home/imgviewsys/imagescreendisplay  || exit
 echo -e "\e[96mInstalling dependencies ...\e[90m"
-if npm install; then 
+if yarn install; then 
 	echo -e "\e[92mDependencies installation Done!\e[0m"
 else
 	echo -e "\e[91mUnable to install dependencies!"
