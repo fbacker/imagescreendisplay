@@ -14,3 +14,8 @@ Connect the Raspberry PI to a monitor that only displays the selected images.
 
 1. First boot you will need to specify a google mail and password account.
 2. Setup kids & parents in web interface.
+
+## Installation
+
+1. Raspberry PI 3 install Ubuntu Mate
+2. `bash -c "$(curl -sL https://raw.githubusercontent.com/fbacker/imagescreendisplay/master/installers/raspberry.sh)"`

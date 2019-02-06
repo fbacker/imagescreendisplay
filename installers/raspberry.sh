@@ -28,7 +28,7 @@ echo -e "\e[96mInstalling helper tools ...\e[90m"
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-
+sudo apt-get update
 sudo apt-get --assume-yes install git nodejs yarn || exit
 
 # Check if we need to install or upgrade Node.js.
@@ -62,12 +62,12 @@ fi
 
 
 # Install
-cd /home/imgviewsys/
+cd ~/
 if [ -d "./imagescreendisplay" ] ; then
 	echo -e "\e[93mIt seems like service is already installed."
 	echo -e "We'll try to upgrade instead."
 	echo ""
-    cd /home/imgviewsys/imagescreendisplay
+    cd ~/imagescreendisplay
 
     echo -e "\e[96mUpgrade ...\e[90m"
 	git reset --hard
@@ -77,7 +77,7 @@ if [ -d "./imagescreendisplay" ] ; then
 	echo -e "\e[92mChecked out latest release version!\e[0m"
 
 	yarn install
-	sudo cp /home/imgviewsys/imagescreendisplay/installers/imagescreendisplay.service /etc/systemd/system/
+	sudo cp ~/installers/imagescreendisplay.service /etc/systemd/system/
 	sudo chmod +x /etc/systemd/system/imagescreendisplay.service
 	sudo systemctl daemon-reload
 	sudo systemctl restart imagescreendisplay.service
@@ -96,7 +96,7 @@ else
 	exit;
 fi
 
-cd /home/imgviewsys/imagescreendisplay  || exit
+cd ~/imagescreendisplay  || exit
 echo -e "\e[96mInstalling dependencies ...\e[90m"
 if yarn install; then 
 	echo -e "\e[92mDependencies installation Done!\e[0m"
@@ -106,7 +106,7 @@ else
 fi
 
 # Use pm2 control like a service
-sudo cp /home/imgviewsys/imagescreendisplay/installers/imagescreendisplay.service /etc/systemd/system/
+sudo cp ~/imagescreendisplay/installers/imagescreendisplay.service /etc/systemd/system/
 sudo chmod +x /etc/systemd/system/imagescreendisplay.service
 sudo systemctl enable imagescreendisplay.service
 sudo systemctl start imagescreendisplay.service
