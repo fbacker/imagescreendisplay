@@ -76,7 +76,13 @@ if [ -d "./imagescreendisplay" ] ; then
 	git checkout $latestTag
 	echo -e "\e[92mChecked out latest release version!\e[0m"
 
-	yarn install
+	echo -e "\e[96mInstalling dependencies ...\e[90m"
+	if yarn install; then 
+		echo -e "\e[92mDependencies installation Done!\e[0m"
+		yarn build
+	else
+		echo -e "\e[91mUnable to install dependencies!"
+		exit;
 	sudo cp ~/installers/imagescreendisplay.service /etc/systemd/system/
 	sudo chmod +x /etc/systemd/system/imagescreendisplay.service
 	sudo systemctl daemon-reload
@@ -100,12 +106,12 @@ cd ~/imagescreendisplay  || exit
 echo -e "\e[96mInstalling dependencies ...\e[90m"
 if yarn install; then 
 	echo -e "\e[92mDependencies installation Done!\e[0m"
+	yarn build
 else
 	echo -e "\e[91mUnable to install dependencies!"
 	exit;
 fi
 
-# Use pm2 control like a service
 sudo cp ~/imagescreendisplay/installers/imagescreendisplay.service /etc/systemd/system/
 sudo chmod +x /etc/systemd/system/imagescreendisplay.service
 sudo systemctl enable imagescreendisplay.service

@@ -3,8 +3,8 @@ Description=Image Screen Display
 After=network.service
 
 [Service]
-WorkingDirectory=/home/username/imagescreendisplay
-ExecStart= /usr/bin/node index.js
+WorkingDirectory=~/imagescreendisplay
+ExecStart= /usr/bin/yarn production
 Restart=always
 RestartSec=10
 Environment=NODE_ENV=production

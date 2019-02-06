@@ -19,3 +19,5 @@ Connect the Raspberry PI to a monitor that only displays the selected images.
 
 1. Raspberry PI 3 install Ubuntu Mate
 2. `bash -c "$(curl -sL https://raw.githubusercontent.com/fbacker/imagescreendisplay/master/installers/raspberry.sh)"`
+3. First configuration run `node ./src/server/index.js` and enter google mail and password. Then exit.
+4. Restart service `sudo systemctl restart imagescreendisplay.service`
