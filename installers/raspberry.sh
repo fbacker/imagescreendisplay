@@ -83,6 +83,7 @@ if [ -d "./imagescreendisplay" ] ; then
 	else
 		echo -e "\e[91mUnable to install dependencies!"
 		exit;
+	fi
 	sudo cp ~/installers/imagescreendisplay.service /etc/systemd/system/
 	sudo chmod +x /etc/systemd/system/imagescreendisplay.service
 	sudo systemctl daemon-reload
