@@ -77,9 +77,9 @@ if [ -d "./imagescreendisplay" ] ; then
 	echo -e "\e[92mChecked out latest release version!\e[0m"
 
 	echo -e "\e[96mInstalling dependencies ...\e[90m"
-	if yarn install; then 
+	if npm install; then 
 		echo -e "\e[92mDependencies installation Done!\e[0m"
-		yarn build
+		npm run build
 	else
 		echo -e "\e[91mUnable to install dependencies!"
 		exit;
@@ -94,20 +94,22 @@ fi
 echo -e "\e[96mCloning ...\e[90m"
 if git clone --depth=1 https://github.com/fbacker/imagescreendisplay.git; then 
 	echo -e "\e[92mCloning Done!\e[0m"
-	git fetch --tags
-	latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
-	git checkout $latestTag
-	echo -e "\e[92mChecked out latest release version!\e[0m"
 else
 	echo -e "\e[91mUnable to clone."
 	exit;
 fi
 
 cd ~/imagescreendisplay  || exit
+
+git fetch --tags
+latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+git checkout $latestTag
+echo -e "\e[92mChecked out latest release version!\e[0m"
+
 echo -e "\e[96mInstalling dependencies ...\e[90m"
-if yarn install; then 
+if npm install; then 
 	echo -e "\e[92mDependencies installation Done!\e[0m"
-	yarn build
+	npm run build
 else
 	echo -e "\e[91mUnable to install dependencies!"
 	exit;
