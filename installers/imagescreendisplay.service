@@ -4,7 +4,7 @@ After=network.service
 
 [Service]
 WorkingDirectory=~/imagescreendisplay
-ExecStart= /usr/bin/yarn production
+ExecStart= /usr/bin/npm run production
 Restart=always
 RestartSec=10
 Environment=NODE_ENV=production

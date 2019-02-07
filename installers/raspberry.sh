@@ -26,10 +26,8 @@ function command_exists () { type "$1" &> /dev/null ;}
 # Installing helper tools
 echo -e "\e[96mInstalling helper tools ...\e[90m"
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt-get update
-sudo apt-get --assume-yes install git nodejs yarn || exit
+sudo apt-get --assume-yes install git nodejs || exit
 
 # Check if we need to install or upgrade Node.js.
 echo -e "\e[96mCheck current Node installation ...\e[0m"
